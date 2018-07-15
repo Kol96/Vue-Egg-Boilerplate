@@ -1,0 +1,52 @@
+// 清除标签默认样式
+a {
+  text-decoration: none;
+}
+
+// 清除IEinput默认样式
+::-ms-clear,
+::-ms-reveal {
+  display: none !important;
+}
+input::-webkit-input-placeholder {
+  color: #909399 !important;
+}
+/* Firefox 18- */
+input:-moz-placeholder {
+  color: #909399 !important;
+}
+/* Firefox 19+ */
+input::-moz-placeholder {
+  color: #909399 !important;
+}
+input:-ms-input-placeholder {
+  color: #909399 !important;
+}
+// 清除数字上下箭头
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+// 输入框有cookie时变黄
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+  -webkit-text-fill-color: #555 !important;
+}
+
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.clearfix:before,
+.clearfix:after {
+  content: '';
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}

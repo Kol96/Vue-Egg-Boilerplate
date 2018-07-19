@@ -1,6 +1,4 @@
-import {
-  Message
-} from 'element-ui'
+import { Message } from 'element-ui'
 import router from './router'
 import store from './store'
 
@@ -19,14 +17,13 @@ router.beforeEach((to, from, next) => {
       } else {
         store
           .dispatch('GetUserInfo')
-          .then(({
-            userInfo
-          }) => {
+          .then(() => {
             // 拉取用户信息及路由表
-            store.dispatch('GenerateRoutes', userInfo).then(() => {
+            store.dispatch('GenerateRoutes').then(() => {
               // 根据roles权限生成可访问的路由表
               router.addRoutes(store.getters.addRouters) // 动态添加可访问路由表
-              next({ ...to,
+              next({
+                ...to,
                 replace: true
               }) // hack方法 确保addRoutes已完成
             })

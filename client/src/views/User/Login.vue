@@ -131,16 +131,10 @@ export default {
               this.$router.push({ path: '/' })
               this.loading = false
             })
-            .catch((error) => {
+            .catch((e) => {
               this.loading = false
-              this.$message({
-                type: 'error',
-                message: error.message,
-                showClose: true
-              })
+              this.$message.error(e.message)
             })
-        } else {
-          console.log('error submit!!')
         }
       })
     }

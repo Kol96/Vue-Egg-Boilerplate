@@ -12,6 +12,8 @@ const user = {
       state.token = token
       if (!token) {
         Cookies.remove('token')
+      } else {
+        Cookies.set('token', token)
       }
     },
     SET_USERINFO: (state, userInfo) => {
@@ -21,11 +23,10 @@ const user = {
 
   actions: {
     // 用户名登录
-    LoginByUsername({ commit }, userInfo) {
+    LoginByUsername({ commit }, user) {
       return new Promise((resolve, reject) => {
-        loginByUsername(userInfo)
-          .then(() => {
-            const token = Cookies.get('token') || '123'
+        loginByUsername(user)
+          .then(({ token }) => {
             commit('SET_TOKEN', token)
             resolve()
           })
@@ -39,10 +40,9 @@ const user = {
     GetUserInfo({ commit }) {
       return new Promise((resolve, reject) => {
         getUserInfo()
-          .then((data) => {
-            const { userInfo } = data
-            commit('SET_USERINFO', userInfo)
-            resolve(data)
+          .then(({ user }) => {
+            commit('SET_USERINFO', user)
+            resolve()
           })
           .catch((error) => {
             reject(error)

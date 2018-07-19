@@ -6,11 +6,9 @@ class HomeController extends Controller {
   async index() {
     const { ctx } = this
     // 获取token信息
-    console.log(ctx.state.user)
-    const res = {
-      uid: ctx.state.user.uid
+    ctx.body = {
+      user: ctx.state.user
     }
-    ctx.helper.success({ ctx, res })
   }
 
   async login() {
@@ -21,16 +19,19 @@ class HomeController extends Controller {
     const token = ctx.app.jwt.sign(
       {
         uid: '123456789',
-        exp: Math.floor(Date.now() / 1000) + 60
+        exp: Math.floor(Date.now() / 1000) + 60 * 60
       },
       ctx.app.config.jwt.secret
     )
-    ctx.body = token
+    ctx.body = { token }
   }
 
-  async error() {
-    // throw new Error('error test')
-    this.ctx.throw(10009, 'new error')
+  async notFound() {
+    this.ctx.throw(404, '资源不存在')
+  }
+
+  async badRequest() {
+    this.ctx.throw(400, '参数校验错误')
   }
 }
 

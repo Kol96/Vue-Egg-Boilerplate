@@ -26,7 +26,7 @@
     .imgEle {
       width: 100%;
       height: 340px;
-      background: url('~@/assets/img/404@2x.png') no-repeat 50% 50%;
+      /*background: url('~@/assets/img/404@2x.png') no-repeat 50% 50%;*/
       background-size: contain;
     }
   }

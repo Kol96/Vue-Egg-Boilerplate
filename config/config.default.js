@@ -17,8 +17,11 @@ module.exports = (appInfo) => {
     gzip: true
   }
 
-  config.jwt = {
-    secret: 'secret-key'
+  config.session = {
+    key: 'EGG_SESS',
+    maxAge: 0,
+    httpOnly: true,
+    encrypt: true
   }
 
   config.httpclient = {

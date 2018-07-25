@@ -6,7 +6,7 @@ import request from '@/utils/request'
  * @returns {AxiosPromise<any> | * | void}
  */
 function loginByUsername(data) {
-  return request.post('/user/signIn', data)
+  return request.post('/user/login', data)
 }
 
 /**
@@ -14,7 +14,7 @@ function loginByUsername(data) {
  * @returns {AxiosPromise<any> | * | void}
  */
 function getUserInfo() {
-  return request.post('/user/userInfo')
+  return request.get('/user/userInfo')
 }
 
 /**
@@ -23,7 +23,7 @@ function getUserInfo() {
  * @returns {AxiosPromise<any> | * | void}
  */
 function logout() {
-  return request.post('/user/signOut')
+  return request.post('/user/logOut')
 }
 
 export {

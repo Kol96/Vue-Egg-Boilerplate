@@ -1,21 +1,11 @@
-import Cookies from 'js-cookie'
 import { loginByUsername, getUserInfo, logout } from '@/api/user'
 
 const user = {
   state: {
-    token: Cookies.get('token'),
     userInfo: null
   },
 
   mutations: {
-    SET_TOKEN: (state, token) => {
-      state.token = token
-      if (!token) {
-        Cookies.remove('token')
-      } else {
-        Cookies.set('token', token)
-      }
-    },
     SET_USERINFO: (state, userInfo) => {
       state.userInfo = userInfo
     }
@@ -26,8 +16,7 @@ const user = {
     LoginByUsername({ commit }, user) {
       return new Promise((resolve, reject) => {
         loginByUsername(user)
-          .then(({ token }) => {
-            commit('SET_TOKEN', token)
+          .then(() => {
             resolve()
           })
           .catch((error) => {
@@ -40,7 +29,7 @@ const user = {
     GetUserInfo({ commit }) {
       return new Promise((resolve, reject) => {
         getUserInfo()
-          .then(({ user }) => {
+          .then((user) => {
             commit('SET_USERINFO', user)
             resolve()
           })
@@ -51,11 +40,10 @@ const user = {
     },
 
     // 登出
-    LogOut({ commit }) {
+    LogOut() {
       return new Promise((resolve, reject) => {
         logout()
           .then(() => {
-            commit('SET_TOKEN', '')
             location.reload() // 退出时自动刷新页面
             resolve()
           })
@@ -68,7 +56,6 @@ const user = {
     // 前端 登出
     FedLogOut({ commit }) {
       return new Promise((resolve) => {
-        commit('SET_TOKEN', '')
         commit('SET_USERINFO', null)
         resolve()
       })

@@ -20,6 +20,7 @@
     "egg-router-plus": "^1.2.1",
     "egg-scripts": "^2.6.0",
     "element-ui": "^2.4.4",
+    "es6-promise": "^4.2.4",
     "lodash": "^4.17.10",
     "md5": "^2.2.1",
     "normalize.css": "^8.0.0",

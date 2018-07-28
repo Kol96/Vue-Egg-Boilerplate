@@ -1,5 +1,4 @@
 FROM node:8.11.3
-ENV NODE_ENV production
 
 WORKDIR /app
 
@@ -9,10 +8,10 @@ RUN echo "Asia/Shanghai" > /etc/timezone;dpkg-reconfigure -f noninteractive tzda
 
 COPY package*.json ./
 
-RUN npm install --production
+RUN npm install --production --registry=https://registry.npm.taobao.org
 
 COPY . .
 
 EXPOSE 7001
 
-CMD ["npm", "run", "start"]
+CMD ["npm", "run", "docker"]

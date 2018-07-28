@@ -6,7 +6,7 @@
   "author": "kylen",
   "license": "MIT",
   "scripts": {
-    "start": "egg-scripts start --daemon --title=vue-egg-boilerplate",
+    "start": "egg-scripts start --title=vue-egg-boilerplate",
     "stop": "egg-scripts stop --title=vue-egg-boilerplate",
     "dev": "egg-bin dev",
     "dev:client": "webpack-dev-server --inline --progress --config client/build/webpack.dev.conf.js",
